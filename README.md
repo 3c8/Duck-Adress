@@ -1,7 +1,7 @@
 # Duck-Adress
 Simple Tool To Give Info About IP Adress<br>
-![Screenshot_15](https://user-images![Screenshot_16](https://user-images.githubusercontent.com/88463490/148974538-e9e68f09-8018-4310-afdd-dc3a122943e2.png)
-.githubusercontent.com/88463490/148970740-e6d7497f-7967-443f-bfd2-6959ec61435f.png)
+![Screenshot_16](https://user-images.githubusercontent.com/88463490/148974588-2b908790-46f8-40fe-9907-5a49bed059e1.png)
+
 
 # Credit
 
