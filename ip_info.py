@@ -1,51 +1,33 @@
-# Programmed By Null, Free Tool
+# Programmed By Lynch, Free Tool
 import requests
 import os
 from os import system
 
-system("title " + "Duck IP Information - Programmed By Null")
+system("title " + "By Lynch - Duck IP Adress Information")
 import colorama
 from colorama import Fore
 
 colorama.init(autoreset=True)
 from time import sleep
 
+sleep(0.5)
 logo = """
 
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣀⣤⣴⣶⣶⣿⣿⣿⣿⣿⣿⣿⣿⣶⣶⣦⣤⣀⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣠⣴⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣦⣄⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⣠⣶⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣶⣄⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⣠⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⣤⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⣠⣾⣿⣿⡿⠟⣻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣝⠛⢿⣿⣿⣷⣄⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⣼⣿⢟⡿⠁⢠⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣧⡀⠘⢿⡻⣿⣧⡀⠀⠀⠀
-⠀⠀⢀⣾⡿⠁⡾⢀⣴⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠏⢹⡏⠙⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⣦⡈⣧⠈⢿⣷⡀⠀⠀
-⠀⢀⡾⢻⡇⢸⠿⠋⣠⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⣿⡇⣠⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⣄⠉⠻⡆⢸⡟⢿⡀⠀
-⠀⣼⠃⢸⡇⢈⣠⢾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡳⣤⡀⢸⡇⠸⣧⠀
-⢰⣿⠀⢸⣧⠟⢁⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣇⣸⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⡈⠻⣾⡇⠀⣿⡆
-⣼⢿⡄⢸⠋⢠⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⣄⠘⠇⢰⡿⣧
-⣿⠸⣧⠈⣰⡟⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠟⢹⣯⣤⣤⣽⡏⠻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣯⠻⣆⢀⣿⠃⣿
-⣿⠀⠹⣷⡏⢀⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠛⠛⠋⠉⠀⠀⣾⣿⣧⣬⣿⣿⠀⠀⠉⠙⠛⠛⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡀⠹⣾⠇⢀⣿
-⣿⣇⠀⢻⠀⣸⣿⣿⣿⣿⣿⣿⣿⣿⣿⡏⠀⠀⠀⠀⠀⠀⣿⣿⡏⢸⣿⣿⠀⠀⠀⠀⠀⠀⢹⣿⣿⣿⣿⣿⣿⣿⣿⣿⣧⠀⡟⠀⣼⣿
-⢻⠻⣦⡈⢀⣿⠸⣿⣿⣿⣿⣿⣿⣿⣿⠁⠀⠀⠀⠀⠀⠀⢹⣿⡇⠸⣿⡏⠀⠀⠀⠀⠀⠀⠀⣿⣿⣿⣿⣿⣿⣿⣿⠃⣿⡄⢀⣾⠏⡟
-⠸⣆⠙⢷⣼⡟⠀⣿⣿⣿⣿⣿⣿⣿⡏⠀⠀⠀⠀⠀⠀⠀⠀⠹⡇⠀⠏⠀⠀⠀⠀⠀⠀⠀⠀⢹⣿⣿⣿⣿⣿⣿⣿⠀⢹⣷⠟⠁⣸⠇
-⠀⢻⣦⡀⠙⢷⠀⣿⡝⣿⣿⣿⣿⣿⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⣿⣿⣿⣿⡿⢣⣿⠀⡾⠁⢀⣼⡿⠀
-⠀⠈⣿⠿⣦⣀⠀⢸⡇⠘⣿⣿⣿⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣿⣿⣿⣿⠁⢸⡇⢀⣠⣶⠟⣿⠁⠀
-⠀⠀⠈⢷⡈⠛⠷⢦⣿⡀⠸⣿⢿⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣿⡿⣻⠇⢀⣿⠶⠟⠋⣠⡾⠃⠀⠀
-⠀⠀⠀⠈⢻⣦⣄⠀⠈⠳⠀⠹⣆⠙⢦⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡴⠋⣰⠏⠀⠋⠁⢀⣠⣾⡟⠁⠀⠀⠀
-⠀⠀⠀⠀⠀⠙⢿⣟⠷⠶⠶⣦⣽⣦⣀⠙⠢⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢋⣠⣴⠿⠶⠶⠾⠛⣫⡿⠋⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠛⢷⣤⣄⣀⣀⣀⣀⣨⣤⠄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠠⣤⣤⣀⣀⣀⣀⣤⣴⡾⠛⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠙⠿⣯⣛⠛⠛⠉⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠉⠉⠛⣉⣽⠿⠋⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠙⠻⣿⣿⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣿⣿⣿⠿⠋⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-
+  _                     _     
+ | |   _   _ _ __   ___| |__  
+ | |  | | | | '_ \ / __| '_ \ 
+ | |__| |_| | | | | (__| | | |
+ |_____\__, |_| |_|\___|_| |_|
+       |___/                                    
 
 """
-print(Fore.RED + logo)
-title = ("Programmed By Null, [Telegram]: @overexcited")
-print(Fore.WHITE + title)
+sleep(0.3)
 
-ip2 = input(f"[{Fore.GREEN}?{Fore.RESET}] Duck IP Adress: ")
-slee = int(input(f"[{Fore.GREEN}?{Fore.RESET}] Sleep (3, average): "))
+print(Fore.CYAN+logo)
+title = ("By Lynch, Telegram: @overexcited")
+print(Fore.RED+title)
+sleep(0.6)
+ip2 = input(f"[{Fore.GREEN}?{Fore.RESET}] Ducks IP Adress: ")
 response = requests.post("http://ip-api.com/batch", json=[
     {
         "query": ip2
@@ -54,10 +36,9 @@ response = requests.post("http://ip-api.com/batch", json=[
 sleep(0)
 for ip_info in response:
     for k, v in ip_info.items():
-        print("⠁⠁⠁⠁⠁⠁⠁⠁⠁⠁⠁⠁⠁⠁⠁⠁⠁⠁⠁⠁⠁⠁⠁⠁⠁⠁⠁⠁⠁⠁⠁⠁⠁⠁⠁")
+        print("+-------------------+")
 
 
-        print(f"\n[{Fore.GREEN}INFO{Fore.RESET}] " + k, v)
+        print(f"\n[{Fore.GREEN}i{Fore.RESET}] " + k, v)
     print("\n")
-input(f"[{Fore.GREEN}+{Fore.RESET}] Made w love, Socials: [I] @yb_hack - [T] @rootybh")
-	
+input(f"[{Fore.GREEN}+{Fore.RESET}] Made w Love, Socials: [I] @entrysquad - [T] @overexcited")
