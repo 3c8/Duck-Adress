@@ -38,3 +38,4 @@ for ip_info in response:
         print(f"\n[{Fore.CYAN}i{Fore.RESET}] " + k, v)
     print("\n")
 input(f"[{Fore.MAGENTA}${Fore.RESET}] Press ENTER To Exit...") 
+⠀ 
